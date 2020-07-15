@@ -1,8 +1,10 @@
 import { Component } from '@angular/core'
 
 @Component({
+  // selector: '.app-server',
+  // selector: '[app-server]',
   selector: 'app-server',
-  template: `<p>I'm an app-server component</p>`,
+  templateUrl: './server.component.html',
   styles: [`
     p {
       color: darkblue;
@@ -11,6 +13,11 @@ import { Component } from '@angular/core'
   `]
 })
 export class ServerComponent {
+  serverId: number[] = [10, 20, 30];
+  status: string = 'offline';
 
+  getServerStatus() {
+    return this.status;
+  }
 }
 

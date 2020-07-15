@@ -1,25 +1,37 @@
 <div class="container">
 
-  <div class="row">
     <h4>I'm the servers component</h4>
+    <hr>
+    <label>serverName: {{ serverName }}</label>
+
+    <input
+      placeholder="event binding"
+      type="text"
+      class="form-control"
+      (input)="onUpdateServerName($event)">
+    <hr>
+
+    <input
+    placeholder="two-way-binding"
+    type="text"
+    class="form-control"
+    [(ngModel)]="serverName"
+    >
+    <hr>
+
+    <span>Button ready:&nbsp;</span>
+    <span [innerText]="allowNewServer"></span>
     <button
       class="btn btn-primary"
       [disabled]="!allowNewServer"
-      >Add Server</button>
-  </div>
+      (click)="onCreateServer()"
+    >Add Server</button>
 
-  <div class="row">
-    <span>Button ready? ==></span>
-    <span [innerText]="allowNewServer"></span>
-  </div>
+    <span class="creation-status">{{ serverCreationStatus }}</span>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <app-server></app-server>
-      <app-server></app-server>
-      <app-server></app-server>
-    </div>
-  </div>
+    <app-server></app-server>
+    <app-server></app-server>
+    <app-server></app-server>
 
 </div>
 

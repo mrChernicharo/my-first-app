@@ -1,18 +1,18 @@
 <div class="container">
 
-    <h4>I'm the servers component</h4>
+    <h4>Servers component</h4>
     <hr>
     <label>serverName: {{ serverName }}</label>
 
-    <input
+    <!-- <input
       placeholder="event binding"
       type="text"
       class="form-control"
       (input)="onUpdateServerName($event)">
-    <hr>
+    <hr> -->
 
     <input
-    placeholder="two-way-binding"
+    placeholder="Enter Server Name"
     type="text"
     class="form-control"
     [(ngModel)]="serverName"
@@ -21,13 +21,17 @@
 
     <span>Button ready:&nbsp;</span>
     <span [innerText]="allowNewServer"></span>
+
     <button
       class="btn btn-primary"
       [disabled]="!allowNewServer"
-      (click)="onCreateServer()"
-    >Add Server</button>
+      (click)="onCreateServer()">Add Server</button>
 
-    <span class="creation-status">{{ serverCreationStatus }}</span>
+    <!-- <span class="creation-status">{{ serverCreationStatus }}</span> -->
+    <span *ngIf="serverCreated; else noServer">Server was created, it's name is: {{ serverName }}</span>
+    <ng-template #noServer>
+      <span>No server was created</span>
+    </ng-template>
 
     <app-server></app-server>
     <app-server></app-server>
